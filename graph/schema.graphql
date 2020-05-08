@@ -32,7 +32,7 @@ scalar GeoLoc
 type TagMsg {
   id: ID!
   text: String!
-  geo: GeoLoc!
+  geo: GeoLoc
 }
 
 type Query {
@@ -41,7 +41,7 @@ type Query {
 
 input NewTagMsg {
   text: String!
-  geo: GeoLoc!
+  geo: GeoLoc
 }
 
 type Mutation {
