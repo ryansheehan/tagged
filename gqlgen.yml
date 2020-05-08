@@ -47,6 +47,8 @@ models:
     model: github.com/ryansheehan/tagger/graph/scalar.GeoLoc
   Time:
     model: github.com/99designs/gqlgen/graphql.Time
+  Map:
+    model: github.com/99designs/gqlgen/graphql.Map
   ID:
     model:
       - github.com/99designs/gqlgen/graphql.ID
