@@ -45,6 +45,8 @@ autobind:
 models:
   GeoLoc:
     model: github.com/ryansheehan/tagger/graph/scalar.GeoLoc
+  Time:
+    model: github.com/99designs/gqlgen/graphql.Time
   ID:
     model:
       - github.com/99designs/gqlgen/graphql.ID

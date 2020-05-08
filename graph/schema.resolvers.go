@@ -6,16 +6,24 @@ package graph
 import (
 	"context"
 	"math/rand"
+	"time"
 
 	"github.com/ryansheehan/tagger/graph/generated"
 	"github.com/ryansheehan/tagger/graph/model"
 )
 
 func (r *mutationResolver) CreateMessage(ctx context.Context, input model.NewTagMsg) (*model.TagMsg, error) {
+	var postAt time.Time
+	var currentTime = time.Now().UTC()
+	if input.PostAt == nil {
+		postAt = currentTime
+	}
 	msg := &model.TagMsg{
-		ID:   rand.Int63(),
-		Text: input.Text,
-		Geo:  input.Geo,
+		ID:        rand.Int63(),
+		Text:      input.Text,
+		Geo:       input.Geo,
+		PostAt:    postAt,
+		CreatedAt: currentTime,
 	}
 	r.messages = append(r.messages, msg)
 	return msg, nil
