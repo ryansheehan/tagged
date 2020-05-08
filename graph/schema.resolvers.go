@@ -5,18 +5,24 @@ package graph
 
 import (
 	"context"
-	"fmt"
+	"math/rand"
 
 	"github.com/ryansheehan/tagger/graph/generated"
 	"github.com/ryansheehan/tagger/graph/model"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *mutationResolver) CreateMessage(ctx context.Context, input model.NewTagMsg) (*model.TagMsg, error) {
+	msg := &model.TagMsg{
+		ID:   rand.Int63(),
+		Text: input.Text,
+		Geo:  input.Geo,
+	}
+	r.messages = append(r.messages, msg)
+	return msg, nil
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *queryResolver) Messages(ctx context.Context) ([]*model.TagMsg, error) {
+	return r.messages, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
